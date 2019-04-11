@@ -1,9 +1,9 @@
 floor = 0
 position = 0
 positiontrigger = False
-with open("input01.txt") as file:
+with open("input01.txt") as f:
 	while 1:
-		char = file.read(1)
+		char = f.read(1)
 		if char == '(':
 			floor += 1
 		elif char == ')':
