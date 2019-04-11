@@ -1,5 +1,6 @@
 totalpaper = 0
 ribbon = 0
+
 f = open("input02.txt")
 for line in f:
 	length,width,height = line.split('x') #take list of inputs, split at x
