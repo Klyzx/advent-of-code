@@ -15,7 +15,7 @@ def newstring(string):
     print(string)
     return (len(string) + 2)
 
-with open('../inputs.txt') as file:
+with open('input08.txt') as file:
     for line in file:
         line = line.rstrip()
         stringliteral += sizeliteral(line)
