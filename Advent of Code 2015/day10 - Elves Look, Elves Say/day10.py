@@ -1,6 +1,7 @@
 from itertools import groupby
 
-number = "1113222113"
+number = "1113122113"
+
 
 def newnumber(currentnum):
     string = ""
@@ -10,11 +11,12 @@ def newnumber(currentnum):
         string += key
     return string
 
-for i in range(0,40):
+
+for i in range(0, 40):
     number = newnumber(number)
 number1 = number
 
-for i in range(0,10):
+for i in range(0, 10):
     number = newnumber(number)
 
 print(len(number1))

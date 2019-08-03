@@ -1,13 +1,14 @@
-wires = []                                      # List of wires
-signl = []                                      # List of signals
-instr = []                                      # List of instructions
+wires = []  # List of wires
+signl = []  # List of signals
+instr = []  # List of instructions
 delet = []
 
-with open('input07.txt') as f:
+with open("input07.txt") as f:
     count = 0
     for line in f:
-        instr.append(line[:-1])                 # Remove new line character
+        instr.append(line[:-1])  # Remove new line character
         count += 1
+
 
 def stringsplit(string):
     """
@@ -24,8 +25,9 @@ def stringsplit(string):
     global parta
     global partb
 
-    parta, partb = string.split(' -> ')
+    parta, partb = string.split(" -> ")
     parta = parta.split()
+
 
 def removeinstr(deleted):
     """
@@ -39,11 +41,12 @@ def removeinstr(deleted):
 
     """
     global count
-    deleted.sort(reverse = True)
+    deleted.sort(reverse=True)
     for i in deleted:
         del instr[i]
         count -= 1
     delet.clear()
+
 
 def initialize():
     """
@@ -60,8 +63,9 @@ def initialize():
             pass
     removeinstr(delet)
 
+
 def therest():
-    while(count > 0):
+    while count > 0:
         for i in range(0, count):
             stringsplit(instr[i])
             if len(parta) == 1:
@@ -72,7 +76,8 @@ def therest():
                 continue
             elif parta[1] == "AND":
                 try:
-                    signl.append(signl[wires.index(parta[0])] & signl[wires.index(parta[2])])
+                    signl.append(signl[wires.index(parta[0])]
+                                 & signl[wires.index(parta[2])])
                     wires.append(partb)
                     delet.append(i)
                     continue
@@ -95,7 +100,8 @@ def therest():
                 continue
             elif parta[1] == "OR":
                 try:
-                    signl.append(signl[wires.index(parta[0])] | signl[wires.index(parta[2])])
+                    signl.append(signl[wires.index(parta[0])]
+                                 | signl[wires.index(parta[2])])
                     wires.append(partb)
                     delet.append(i)
                     continue
@@ -140,9 +146,11 @@ def therest():
                 delet.append(i)
                 continue
         removeinstr(delet)
+
+
 initialize()
 therest()
 print(instr)
 print(wires)
 print(signl)
-print(signl[wires.index('a')])
+print(signl[wires.index("a")])

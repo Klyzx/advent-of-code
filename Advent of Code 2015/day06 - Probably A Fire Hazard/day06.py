@@ -1,9 +1,10 @@
 import numpy
-lightarray = numpy.zeros([1000,1000], dtype = 'int')
-with open('input06.txt') as f:
+
+lightarray = numpy.zeros([1000, 1000], dtype="int")
+with open("input06.txt") as f:
     for line in f:
-        instruction = line.replace(',',' ').split()
-        if instruction[1] == 'on':
+        instruction = line.replace(",", " ").split()
+        if instruction[1] == "on":
             x1 = int(instruction[2])
             y1 = int(instruction[3])
             x2 = int(instruction[5])
@@ -18,7 +19,7 @@ with open('input06.txt') as f:
                     currenty += 1
                 currenty = y1
                 currentx += 1
-        elif instruction[1] == 'off':
+        elif instruction[1] == "off":
             x1 = int(instruction[2])
             y1 = int(instruction[3])
             x2 = int(instruction[5])
@@ -53,11 +54,11 @@ with open('input06.txt') as f:
                 currentx += 1
 print("Lights on: ", numpy.count_nonzero(lightarray))
 
-lightarray = numpy.zeros([1000,1000], dtype = 'int')
-with open('input06.txt') as f:
+lightarray = numpy.zeros([1000, 1000], dtype="int")
+with open("input06.txt") as f:
     for line in f:
-        instruction = line.replace(',',' ').split()
-        if instruction[1] == 'on':
+        instruction = line.replace(",", " ").split()
+        if instruction[1] == "on":
             x1 = int(instruction[2])
             y1 = int(instruction[3])
             x2 = int(instruction[5])
@@ -72,7 +73,7 @@ with open('input06.txt') as f:
                     currenty += 1
                 currenty = y1
                 currentx += 1
-        elif instruction[1] == 'off':
+        elif instruction[1] == "off":
             x1 = int(instruction[2])
             y1 = int(instruction[3])
             x2 = int(instruction[5])
