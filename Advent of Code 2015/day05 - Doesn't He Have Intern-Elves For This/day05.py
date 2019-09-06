@@ -3,6 +3,7 @@ vowels = ['a', 'e', 'i', 'o', 'u']
 characterposition = 0
 amountofnicestrings = 0
 stringnicenesscounter = 0
+
 with open('input05.txt') as f:
     for line in f:
         vowelsinword = 0  # Set these variables to 0 at the start of every line
@@ -62,4 +63,5 @@ with open('input05.txt') as f:
             r = 2
         if stringnicenesscounter == 2:
             amountofnicestrings += 1
+
 print("Amount of nice strings 2: ", amountofnicestrings)

@@ -30,7 +30,6 @@ def survive():
     board = np.zeros((size, size), dtype = np.int)
     board[1:size-1] = newboard[1:size-1]
 
-
 for k in range(100):
     survive()
 

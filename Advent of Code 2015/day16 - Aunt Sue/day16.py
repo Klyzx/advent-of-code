@@ -9,7 +9,6 @@ def checks(lista):
                 or (lista[6] == names[i] and int(lista[7]) == values[i])):
             correct += 1
 
-
 values2 = [3, 2, 0, 0, 2, 1]
 names2 = ["children", "samoyeds", "akitas", "vizslas", "cars", "perfumes"]
 
@@ -36,7 +35,6 @@ def checks2(lista):
             or (lista[4] == "goldfish" and int(lista[5]) < 5)
             or (lista[6] == "goldfish" and int(lista[7]) < 5)):
         correct += 1
-
 
 with open("input16.txt") as f:
     for line in f:

@@ -9,7 +9,6 @@ with open("input07.txt") as f:
         instr.append(line[:-1])  # Remove new line character
         count += 1
 
-
 def stringsplit(string):
     """
     Splits a string into two parts by ' -> '
@@ -27,7 +26,6 @@ def stringsplit(string):
 
     parta, partb = string.split(" -> ")
     parta = parta.split()
-
 
 def removeinstr(deleted):
     """
@@ -47,7 +45,6 @@ def removeinstr(deleted):
         count -= 1
     delet.clear()
 
-
 def initialize():
     """
     This function adds all of the wires with a given value in input to the
@@ -62,7 +59,6 @@ def initialize():
         except:
             pass
     removeinstr(delet)
-
 
 def therest():
     while count > 0:
@@ -146,7 +142,6 @@ def therest():
                 delet.append(i)
                 continue
         removeinstr(delet)
-
 
 initialize()
 therest()

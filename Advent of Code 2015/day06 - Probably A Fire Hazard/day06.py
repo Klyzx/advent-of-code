@@ -105,4 +105,5 @@ with open("input06.txt") as f:
                     currenty += 1
                 currenty = y1
                 currentx += 1
+
 print("Total brightness: ", numpy.sum(lightarray))
