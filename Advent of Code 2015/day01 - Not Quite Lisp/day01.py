@@ -1,6 +1,7 @@
 floor = 0
 position = 0
 positiontrigger = False
+
 with open("input01.txt") as f:
     while True:
         char = f.read(1)
