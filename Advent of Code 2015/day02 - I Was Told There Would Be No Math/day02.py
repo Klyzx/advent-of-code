@@ -3,8 +3,8 @@ ribbon = 0
 
 f = open("input02.txt")
 for line in f:
-    length, width, height = line.split('x')  #take list of inputs, split at x
-    length = int(length)  #take each string and make them integers
+    length, width, height = line.split('x')
+    length = int(length)
     width = int(width)
     height = int(height)
     list = [length, width, height]
