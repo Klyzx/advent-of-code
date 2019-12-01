@@ -9,7 +9,7 @@ def day01():
         a += x
         while (x > 0):
             b += x
-            x = math.floor(int(x)/3) - 2
+            x = math.floor(x/3) - 2
     return(a, b)
 
 print(day01())

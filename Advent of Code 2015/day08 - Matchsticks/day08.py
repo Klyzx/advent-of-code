@@ -9,8 +9,7 @@ def sizememory(string):
     return len(eval(string))
 
 def newstring(string):
-    string = string.replace("\\", "\\\\")
-    string = string.replace('"', '\\"')
+    string = string.replace("\\", "\\\\").replace('"', '\\"')
     return len(string) + 2
 
 with open("input08.txt") as f:
