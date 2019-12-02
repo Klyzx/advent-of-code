@@ -24,12 +24,12 @@ def pointcalc():
         for k in range(0, 9):
             if valdist[k] == max(valdist):
                 valpoints[k] += 1
-    print(max(valpoints))
+    return(max(valpoints))
 
 def olympics1():
     for i in range(0, 9):
         totdist.append(reindeer(valrest[i], valtime[i], valspeed[i]))
-    print(max(totdist))
+    return(max(totdist))
 
-olympics1()
-pointcalc()
+print(olympics1())
+print(pointcalc())
