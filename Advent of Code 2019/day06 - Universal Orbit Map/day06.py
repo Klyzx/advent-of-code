@@ -4,8 +4,7 @@ G = nx.Graph()
 file = open("input06.txt", "r")
 
 for line in file:
-    line = line[:-1].split(')')
-    G.add_edge(line[0], line[1])
+    G.add_edge(line[:3], line[4:7])
 
 sum = 0
 for node in G:
