@@ -1,11 +1,13 @@
 file = open("input01.txt", "r")
 
+
 def part1():
     sum = 0
     for line in file:
         line = int(line)
         sum += line
-    return(sum)
+    return (sum)
+
 
 def part2():
     numbers = []
@@ -17,7 +19,7 @@ def part2():
             if sum not in numbers:
                 numbers.append(sum)
             else:
-                return(sum)
+                return (sum)
         else:
             file.seek(0, 0)
 

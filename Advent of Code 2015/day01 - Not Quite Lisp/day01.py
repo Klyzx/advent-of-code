@@ -13,6 +13,6 @@ with open("input01.txt") as f:
             print('The final floor is: ', floor)
             break
         position += 1
-        if floor < 0 and positiontrigger == False:
+        if floor < 0 and positiontrigger is False:
             print('The position Santa goes into the basement: ', position)
             positiontrigger = True

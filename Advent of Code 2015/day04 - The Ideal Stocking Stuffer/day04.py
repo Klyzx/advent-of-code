@@ -1,6 +1,7 @@
 from hashlib import md5
 thecode = 'yzbqklnj'
 
+
 def hash(num):
     integer = 0
     while True:
@@ -8,6 +9,7 @@ def hash(num):
         if result[:num] == '0'*num:
             return(integer)
         integer += 1
+
 
 print(hash(5))
 print(hash(6))

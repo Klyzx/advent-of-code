@@ -2,7 +2,7 @@ santax = 0
 santay = 0
 robox = 0
 roboy = 0
-isrobotactive = 0  #set to 1 to activate the santa robot
+isrobotactive = 0  # set to 1 to activate the santa robot
 santavsroboturn = 0
 houselist = {}
 uniquehouse = 0
@@ -23,11 +23,12 @@ with open('input03.txt') as f:
                 uniquehouse += 1
         else:
             if direction == '\n':
-                break;
+                break
             robox += DX[direction]
             roboy += DY[direction]
             santavsroboturn = 0
             if (robox, roboy) not in houselist:
                 houselist[(robox, roboy)] = uniquehouse
                 uniquehouse += 1
+
 print('The total amount of unique houses is: ', uniquehouse)

@@ -21,13 +21,15 @@ def part1():
                 three = False
         print("Part 1:", twos*threes)
 
+
 def part2():
     with open("input02.txt", "r") as file:
         strings = []
         for line in file:
             line = line[:-1]
             strings.append(line)
-        for i in range(0,250):
+
+        for i in range(0, 250):
             for j in range(i, 250):
                 diff = 0
                 str1 = strings[i]
@@ -42,6 +44,7 @@ def part2():
                             str += a
                     print(str)
                     break
+
 
 part1()
 part2()
