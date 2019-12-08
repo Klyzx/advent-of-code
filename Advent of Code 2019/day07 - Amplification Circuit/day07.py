@@ -1,10 +1,14 @@
+from sys import exit
+from itertools import permutations
 ADV = {1: 4, 2: 4, 3: 2, 4: 0, 5: 0, 6: 0, 7: 4, 8: 4}
 
 
 class Machine:
-    def __init__(self, data):
+    def __init__(self, data, phase):
         self.data = list(data)
         self.IP = 0
+        self.write(1, phase)
+        self.IP += 2
 
     def run(self, input=None):
         while self.running:
@@ -33,6 +37,8 @@ class Machine:
 
             self.IP += ADV[cmd]
 
+        return 0
+
     @property
     def running(self):
         return self.data[self.IP] != 99
@@ -47,33 +53,34 @@ class Machine:
         self.data[self.data[self.IP + node]] = val
 
 
-nums = open('input02.txt').read().split(',')
+nums = open('input07.txt').read().split(',')
 for i in range(len(nums)):
     nums[i] = int(nums[i])
 nums2 = list(nums)
-backup = list(nums)
 
-nums[1] = 12
-nums[2] = 2
 
-computer = Machine(nums)
-
-computer.run()
-print(computer.data[0])
+def part1():
+    max_output = 0
+    for phases in permutations([0, 1, 2, 3, 4]):
+        amplifiers = [Machine(nums, phase) for phase in phases]
+        out_in = 0
+        for amplify in amplifiers:
+            out_in = amplify.run(out_in)
+        max_output = max(max_output, out_in)
+    return max_output
 
 
 def part2():
-    global nums2
-    for noun in range(len(nums2)):
-        for verb in range(len(nums2)):
-            nums2[1] = noun
-            nums2[2] = verb
-            computer = Machine(nums2)
-            computer.run()
-            if computer.data[0] == 19690720:
-                return noun*100 + verb
-
-            nums2 = backup
+    max_output = 0
+    for phases in permutations([5, 6, 7, 8, 9]):
+        amplifiers = [Machine(nums, phase) for phase in phases]
+        out_in = 0
+        while amplifiers[0].running:
+            for amplify in amplifiers:
+                out_in = amplify.run(out_in)
+                max_output = max(max_output, out_in)
+    return max_output
 
 
-part2()
+print(f"Part 1: {part1()}")
+print(f"Part 2: {part2()}")
