@@ -1,7 +1,7 @@
 totalpaper = 0
 ribbon = 0
 
-f = open("input02.txt")
+f = open("input02.txt", "r")
 for line in f:
     length, width, height = line.split('x')
     length = int(length)
@@ -12,5 +12,5 @@ for line in f:
     totalpaper += 2 * (length * height + length * width +
                        width * height) + list[0] * list[1]
     ribbon += 2 * (list[0] + list[1]) + length * width * height
-print('Total square feet of wrapping paper: ', totalpaper)
-print('Total ribbon length: ', ribbon)
+print(f'Total square feet of wrapping paper: {totalpaper}')
+print(f'Total ribbon length: {ribbon}')

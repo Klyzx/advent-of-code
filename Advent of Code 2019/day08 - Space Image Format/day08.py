@@ -31,7 +31,7 @@ def part2():
     image = list(divide(image, 25))
     plt.set_cmap('binary')
     plt.axis('off')
-    plt.imshow(image, interpolation='nearest')
+    plt.imshow(image)
 
 
 print(part1())

@@ -52,7 +52,7 @@ with open("input06.txt") as f:
                     currenty += 1
                 currenty = y1
                 currentx += 1
-print("Lights on: ", numpy.count_nonzero(lightarray))
+print(f"Lights on: {numpy.count_nonzero(lightarray)}")
 
 lightarray = numpy.zeros([1000, 1000], dtype="int")
 with open("input06.txt") as f:
@@ -106,4 +106,4 @@ with open("input06.txt") as f:
                 currenty = y1
                 currentx += 1
 
-print("Total brightness: ", numpy.sum(lightarray))
+print(f"Total brightness: {numpy.sum(lightarray)}")

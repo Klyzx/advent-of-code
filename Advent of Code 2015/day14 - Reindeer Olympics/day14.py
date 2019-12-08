@@ -6,6 +6,7 @@ valpoints = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 valdist = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 totdist = []
 
+
 def reindeer(rest, time, speed, tottime=2503):
     distance = 0
     for i in range(1, tottime + 1):
@@ -13,9 +14,11 @@ def reindeer(rest, time, speed, tottime=2503):
             distance += speed
     return distance
 
+
 def reindeer2(rest, time, speed, now, reindeernum):
     if (now % (rest + time) >= 1) and (now % (rest + time) <= time):
         valdist[reindeernum] += speed
+
 
 def pointcalc():
     for i in range(1, tottime + 1):
@@ -26,10 +29,12 @@ def pointcalc():
                 valpoints[k] += 1
     return(max(valpoints))
 
+
 def olympics1():
     for i in range(0, 9):
         totdist.append(reindeer(valrest[i], valtime[i], valspeed[i]))
     return(max(totdist))
+
 
 print(olympics1())
 print(pointcalc())

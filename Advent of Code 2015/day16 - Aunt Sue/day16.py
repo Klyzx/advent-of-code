@@ -1,16 +1,20 @@
 values = [3, 7, 2, 3, 0, 0, 5, 3, 2, 1]
-names = ["children", "cats", "samoyeds", "pomeranians", "akitas", "vizslas", "goldfish", "trees", "cars", "perfumes"]
+names = ["children", "cats", "samoyeds", "pomeranians", "akitas",
+         "vizslas", "goldfish", "trees", "cars", "perfumes"]
+
 
 def checks(lista):
     global correct
-    for i in range(0,10):
+    for i in range(0, 10):
         if ((lista[2] == names[i] and int(lista[3]) == values[i])
                 or (lista[4] == names[i] and int(lista[5]) == values[i])
                 or (lista[6] == names[i] and int(lista[7]) == values[i])):
             correct += 1
 
+
 values2 = [3, 2, 0, 0, 2, 1]
 names2 = ["children", "samoyeds", "akitas", "vizslas", "cars", "perfumes"]
+
 
 def checks2(lista):
     global correct
@@ -35,6 +39,7 @@ def checks2(lista):
             or (lista[4] == "goldfish" and int(lista[5]) < 5)
             or (lista[6] == "goldfish" and int(lista[7]) < 5)):
         correct += 1
+
 
 with open("input16.txt") as f:
     for line in f:
