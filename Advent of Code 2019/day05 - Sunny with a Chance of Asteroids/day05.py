@@ -7,10 +7,10 @@ nums = open('input05.txt').read().split(',')
 for i in range(len(nums)):
     nums[i] = int(nums[i])
 
-machine1 = Machine(nums, 1)
-machine2 = Machine(nums, 5)
-out1 = 0
-out2 = 0
+machine1 = Machine(nums)
+machine2 = Machine(nums)
+out1 = machine1.run(1)
+out2 = machine2.run(5)
 
 while machine1.running:
     out1 = machine1.run()
