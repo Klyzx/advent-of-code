@@ -13,17 +13,46 @@ OPC = {1: "ADD",
 
 
 class Machine:
-    def __init__(self, data, input=None, debug=False):
+    """Intcode Computer implementation
+
+    Parameters
+    ----------
+    data : list
+        The program data of the computer
+    inputs : list
+        List of inputs for the computer (the default is []).
+    old_input : int
+        Old input method if first opcode is 3 (the default is None).
+    debug : bool
+        If true, prints out all instructions (the default is False).
+
+    """
+
+    def __init__(self, data, inputs=[], old_input=None, debug=False):
         self.data = defaultdict(int, enumerate(data))
         self.IP = 0
         self.REL = 0
         self.DEBUG = debug
         self.INS = 0
-        if input is not None:
-            self.write(1, input)
+        self.INPUT = inputs
+        if old_input is not None:
+            self.write(1, old_input)
             self.IP += 2
 
-    def run(self, input=None):
+    def run(self, old_input=None):
+        """Runs one loop of the computer until opcode 4 or computer halts
+
+        Parameters
+        ----------
+        old_input : int
+            Old input method, deprecated (the default is None).
+
+        Returns
+        -------
+        int
+            Returns integer on opcode 4
+
+        """
         while self.running:
             cmd = self.data[self.IP] % 100
             if self.DEBUG:
@@ -35,7 +64,11 @@ class Machine:
             elif cmd == 2:
                 self.write(3, self.get(1) * self.get(2))
             elif cmd == 3:
-                self.write(1, input)
+                if old_input is None:
+                    self.write(1, self.INPUT[0])
+                    self.INPUT = self.INPUT[1:]
+                else:
+                    self.write(1, old_input)
             elif cmd == 4:
                 output = self.get(1)
                 self.IP += 2
@@ -58,9 +91,30 @@ class Machine:
 
     @property
     def running(self):
+        """Returns if computer is running
+
+        Returns
+        -------
+        bool
+            True if Intcode Computer hasn't reached opcode 99 yet
+
+        """
         return self.data[self.IP] != 99
 
     def get(self, node):
+        """Returns value of node
+
+        Parameters
+        ----------
+        node : int
+            Node to get value from in position, immediate, or relative mode
+
+        Returns
+        -------
+        int
+            Returns value of parameter
+
+        """
         if (self.data[self.IP] // (10**(node + 1))) % 10 == 1:
             return self.data[self.IP + node]
         elif (self.data[self.IP] // (10**(node + 1))) % 10 == 2:
@@ -69,7 +123,28 @@ class Machine:
             return self.data[self.data[self.IP + node]]
 
     def write(self, node, val):
+        """Writes val to node
+
+        Parameters
+        ----------
+        node : int
+            Node position to write to
+        val : int
+            Value to write at node
+
+        """
         if (self.data[self.IP] // (10**(node + 1))) % 10 == 2:
             self.data[self.data[self.IP + node] + self.REL] = val
         else:
             self.data[self.data[self.IP + node]] = val
+
+    def set_input(self, newinput):
+        """Replaces the current input with newinput
+
+        Parameters
+        ----------
+        newinput : list
+            List of inputs to use with opcode 3
+
+        """
+        self.INPUT = newinput
