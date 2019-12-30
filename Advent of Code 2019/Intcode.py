@@ -28,13 +28,14 @@ class Machine:
 
     """
 
-    def __init__(self, data, inputs=[], old_input=None, debug=False):
+    def __init__(self, data, inputs=[], old_input=None, debug=False, day=None):
         self.data = defaultdict(int, enumerate(data))
         self.IP = 0
         self.REL = 0
         self.DEBUG = debug
         self.INS = 0
         self.INPUT = inputs
+        self.DAY = day
         if old_input is not None:
             self.write(1, old_input)
             self.IP += 2
@@ -64,11 +65,18 @@ class Machine:
             elif cmd == 2:
                 self.write(3, self.get(1) * self.get(2))
             elif cmd == 3:
-                if old_input is None:
+                if old_input is None and self.DAY is None:
                     self.write(1, self.INPUT[0])
                     self.INPUT = self.INPUT[1:]
-                else:
+                elif self.DAY is None:
                     self.write(1, old_input)
+                elif self.DAY == 25:
+                    if self.INPUT == []:
+                        inst = input()
+                        inst += '\n'
+                        self.INPUT = [ord(c) for c in inst]
+                    self.write(1, self.INPUT[0])
+                    self.INPUT = self.INPUT[1:]
             elif cmd == 4:
                 output = self.get(1)
                 self.IP += 2
