@@ -25,6 +25,8 @@ class Machine:
         Old input method if first opcode is 3 (the default is None).
     debug : bool
         If true, prints out all instructions (the default is False).
+    day : int
+        This shouldn't need to exist but it's for day 25
 
     """
 
