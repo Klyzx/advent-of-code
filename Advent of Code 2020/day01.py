@@ -1,25 +1,17 @@
-from itertools import combinations
+from math import prod
 
 
 file = open("inputs/01.in", "r")
-numbers = []
-for line in file:
-    numbers.append(int(line))
+data = list(map(int, file))
 
 
 def part1(arr):
-    combs = combinations(arr, 2)
-    for i in combs:
-        if sum(i) == 2020:
-            return i[0] * i[1]
+    return [x for x in data if 2020 - x in data]
 
 
 def part2(arr):
-    combs = combinations(arr, 3)
-    for i in combs:
-        if sum(i) == 2020:
-            return i[0] * i[1] * i[2]
+    return set([x for x in data for y in data if 2020 - x - y in data])
 
 
-print(part1(numbers))
-print(part2(numbers))
+print(prod(part1(data)))
+print(prod(part2(data)))
