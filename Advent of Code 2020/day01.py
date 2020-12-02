@@ -1,8 +1,8 @@
 from math import prod
 
 
-file = open("inputs/01.in", "r")
-data = list(map(int, file))
+with open("inputs/01.in", "r") as file:
+    data = list(map(int, file))
 
 
 def part1(arr):
