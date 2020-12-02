@@ -10,7 +10,7 @@ def part1(arr):
     for line in arr:
         password = re.split("-| |: ", line.strip())
         n = password[3].count(password[2])
-        if int(password[0]) <= n and n <= int(password[1]):
+        if int(password[0]) <= n <= int(password[1]):
             valid += 1
     return valid
 
