@@ -19,25 +19,19 @@ def passportCheck(passport):
 
 
 def passportStrict(passport):
-    byr = int(passport.get("byr"))
-    iyr = int(passport.get("iyr"))
-    eyr = int(passport.get("eyr"))
-    ecl = passport.get("ecl")
-    pid = passport.get("pid")
-    hcl = passport.get("hcl")
     hgt = int(str(0) + passport.get("hgt")[:-2])
     cmin = passport.get("hgt")[-2:]
-    if not 1920 <= byr <= 2002:
+    if not 1920 <= int(passport.get("byr")) <= 2002:
         return False
-    if not 2010 <= iyr <= 2020:
+    if not 2010 <= int(passport.get("iyr")) <= 2020:
         return False
-    if not 2020 <= eyr <= 2030:
+    if not 2020 <= int(passport.get("eyr")) <= 2030:
         return False
-    if ecl not in eyeColor:
+    if passport.get("ecl") not in eyeColor:
         return False
-    if len(pid) != 9:
+    if len(passport.get("pid")) != 9:
         return False
-    if len(hcl) != 7:
+    if len(passport.get("hcl")) != 7:
         return False
     if cmin == "cm":
         if not 150 <= hgt <= 193:
@@ -47,7 +41,6 @@ def passportStrict(passport):
             return False
     else:
         return False
-
     return True
 
 
