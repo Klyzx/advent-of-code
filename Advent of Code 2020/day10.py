@@ -3,6 +3,9 @@ from collections import defaultdict
 
 with open("inputs/10.in", "r") as file:
     data = list(map(int, file))
+data.append(0)
+data.append(max(data)+3)
+data.sort()
 
 
 def part1(voltages):
@@ -12,9 +15,6 @@ def part1(voltages):
     return diff_list.count(1)*diff_list.count(3)
 
 
-data.append(0)
-data.append(max(data)+3)
-data.sort()
 adapterDict = defaultdict(int)
 adapterDict[0] = 1
 for i in data[1:]:
