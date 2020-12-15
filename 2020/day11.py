@@ -10,7 +10,7 @@ width = len(seating[0])
 height = len(seating)
 
 
-def checkSeat(x, y, dx, dy, part):
+def check_seat(x, y, dx, dy, part):
     if x < 0 or x >= width or y < 0 or y >= height:
         return None
     if part == 2:
@@ -28,7 +28,7 @@ def playTurns(part, count):
         board, seatingCopy = seatingCopy, [row[:] for row in seatingCopy]
         for y in range(height):
             for x in range(width):
-                cnt = sum(TAKEN == checkSeat(x + dx, y + dy, dx, dy, part)
+                cnt = sum(TAKEN == check_seat(x + dx, y + dy, dx, dy, part)
                           for dx in [-1, 0, 1] for dy in [-1, 0, 1]
                           if (dx, dy) != (0, 0))
                 if board[y][x] == EMPTY and cnt == 0:

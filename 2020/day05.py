@@ -13,9 +13,9 @@ def seatID(boardpass):
 highest = 0
 allseats = []
 for i in range(len(data)):
-    currentSeat = seatID(data[i])
-    highest = currentSeat if currentSeat > highest else highest
-    allseats.append(currentSeat)
+    current_seat = seatID(data[i])
+    highest = current_seat if current_seat > highest else highest
+    allseats.append(current_seat)
 
 print(highest)
 

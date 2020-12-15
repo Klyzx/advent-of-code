@@ -3,29 +3,29 @@ with open("inputs/12.in", "r") as file:
 
 
 def part1():
-    shipPosition = 0 + 0j
+    ship_position = 0 + 0j
     direction = 1 + 0j
     for line in directions:
         move, distance = line[:1], int(line[1:])
         if move == "N":
-            shipPosition += distance * 1j
+            ship_position += distance * 1j
         elif move == "S":
-            shipPosition -= distance * 1j
+            ship_position -= distance * 1j
         elif move == "E":
-            shipPosition += distance
+            ship_position += distance
         elif move == "W":
-            shipPosition -= distance
+            ship_position -= distance
         elif move == "L":
             direction *= 1j**(distance/90)
         elif move == "R":
             direction /= 1j**(distance/90)
         elif move == "F":
-            shipPosition += direction * distance
-    return (shipPosition.real, shipPosition.imag)
+            ship_position += direction * distance
+    return (ship_position.real, ship_position.imag)
 
 
 def part2():
-    shipPosition = 0 + 0j
+    ship_position = 0 + 0j
     waypoint = 10 + 1j
     for line in directions:
         move, distance = line[:1], int(line[1:])
@@ -42,8 +42,8 @@ def part2():
         elif move == "R":
             waypoint /= 1j**(distance/90)
         elif move == "F":
-            shipPosition += distance * waypoint
-    return (shipPosition.real, shipPosition.imag)
+            ship_position += distance * waypoint
+    return (ship_position.real, ship_position.imag)
 
 
 a = part1()

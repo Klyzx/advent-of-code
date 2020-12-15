@@ -3,22 +3,22 @@ with open("inputs/04.in", "r") as file:
 for i in range(len(data)):
     data[i] = data[i].replace('\n', ' ').strip()
 
-passportInformation = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
+passport_information = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
 eyeColor = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
 
 
-def passportCheck(passport):
-    requiredFields = 0
-    requiredFields = 0
-    for key in passportInformation:
+def passport_check(passport):
+    required_fields = 0
+    required_fields = 0
+    for key in passport_information:
         if key in passport:
-            requiredFields += 1
-    if requiredFields == 7:
+            required_fields += 1
+    if required_fields == 7:
         return True
     return False
 
 
-def passportStrict(passport):
+def passport_strict(passport):
     hgt = int(str(0) + passport.get("hgt")[:-2])
     cmin = passport.get("hgt")[-2:]
     if not 1920 <= int(passport.get("byr")) <= 2002:
@@ -44,16 +44,16 @@ def passportStrict(passport):
     return True
 
 
-validPassports = 0
-strictPassports = 0
+valid_passports = 0
+strict_passports = 0
 
 for i in range(len(data)):
-    passportData = dict(x.split(":") for x in data[i].split(" "))
-    passportValid = passportCheck(passportData)
-    validPassports += passportValid
-    if passportValid:
-        passportValid = passportStrict(passportData)
-        strictPassports += passportValid
+    passport_data = dict(x.split(":") for x in data[i].split(" "))
+    passport_valid = passport_check(passport_data)
+    valid_passports += passport_valid
+    if passport_valid:
+        passport_valid = passport_strict(passport_data)
+        strict_passports += passport_valid
 
-print(validPassports)
-print(strictPassports)
+print(valid_passports)
+print(strict_passports)

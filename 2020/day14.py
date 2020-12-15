@@ -1,12 +1,10 @@
-from collections import defaultdict
-
-
 with open("inputs/14.in", "r") as file:
     directions = file.read().splitlines()
 
 
 def part1(array):
-    mem = defaultdict(int)
+    # mem = defaultdict(int)
+    mem = {}
     for _, line in enumerate(array):
         line = line.split(' = ')
         # Change mask
@@ -24,16 +22,16 @@ def part1(array):
     return mem
 
 
-def addresses(x):
-    if 'X' not in x:
-        yield x
+def addresses(address):
+    if 'X' not in address:
+        yield address
     else:
-        yield from addresses(x.replace('X', '0', 1))
-        yield from addresses(x.replace('X', '1', 1))
+        yield from addresses(address.replace('X', '0', 1))
+        yield from addresses(address.replace('X', '1', 1))
 
 
 def part2(array):
-    mem = defaultdict(int)
+    mem = {}
     for _, line in enumerate(array):
         line = line.split(" = ")
         if line[0] == "mask":

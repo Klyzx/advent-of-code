@@ -3,35 +3,35 @@ import re
 
 
 with open("inputs/07.in", "r") as file:
-    bagData = file.read().splitlines()
+    bag_data = file.read().splitlines()
 
 contains = defaultdict(list)
-containedIn = defaultdict(set)
-for bagInfo in bagData:
-    color = re.match(r'(.+) bags contain', bagInfo)[1]
-    for count, containColors in re.findall(r'(\d+) (.+?) bags?[,.]', bagInfo):
+contained_in = defaultdict(set)
+for bag_info in bag_data:
+    color = re.match(r'(.+) bags contain', bag_info)[1]
+    for count, contain_color in re.findall(r'(\d+) (.+?) bags?[,.]', bag_info):
         count = int(count)
-        containedIn[containColors].add(color)
-        contains[color].append((count, containColors))
+        contained_in[contain_color].add(color)
+        contains[color].append((count, contain_color))
 
 
 shinygold = set()
 
 
 def check(color):
-    for c in containedIn[color]:
+    for c in contained_in[color]:
         shinygold.add(c)
         check(c)
 
 
-def totalBags(color):
+def total_bags(color):
     total = 0
-    for count, containColor in contains[color]:
+    for count, contain_color in contains[color]:
         total += count
-        total += count * totalBags(containColor)
+        total += count * total_bags(contain_color)
     return total
 
 
 check('shiny gold')
 print(len(shinygold))
-print(totalBags('shiny gold'))
+print(total_bags('shiny gold'))
