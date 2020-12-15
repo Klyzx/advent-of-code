@@ -1,12 +1,8 @@
-with open("inputs/15.in") as file:
-    numbers = list(map(int, file.readline().strip().split(',')))
-
-
 def solver(timer):
     spoken_numbers = {}
     last_number = None
 
-    for turn, number in enumerate(numbers):
+    for turn, number in enumerate([15, 5, 1, 4, 7, 0]):
         spoken_numbers[number] = turn
         last_number = number
 
