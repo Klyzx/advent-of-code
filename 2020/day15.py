@@ -1,8 +1,9 @@
+arr = [15, 5, 1, 4, 7, 0]
+
 def solver(timer):
     spoken_numbers = {}
-    last_number = None
 
-    for turn, number in enumerate([15, 5, 1, 4, 7, 0]):
+    for turn, number in enumerate(arr):
         spoken_numbers[number] = turn
         last_number = number
 
