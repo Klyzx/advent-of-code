@@ -1,5 +1,5 @@
 with open("inputs/14.in", "r") as file:
-    directions = file.read().splitlines()
+    INPUT = file.read().splitlines()
 
 
 def part1(array):
@@ -44,7 +44,7 @@ def part2(array):
     return mem
 
 
-memory1 = part1(directions)
+memory1 = part1(INPUT)
 print(sum([memory1[key] for key in memory1]))
-memory2 = part2(directions)
+memory2 = part2(INPUT)
 print(sum([memory2[key] for key in memory2]))

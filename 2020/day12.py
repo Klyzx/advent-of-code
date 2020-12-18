@@ -1,8 +1,8 @@
 with open("inputs/12.in", "r") as file:
-    directions = file.read().splitlines()
+    INPUT = file.read().splitlines()
 
 
-def part1():
+def part1(directions):
     ship_position = 0 + 0j
     direction = 1 + 0j
     for line in directions:
@@ -24,7 +24,7 @@ def part1():
     return (ship_position.real, ship_position.imag)
 
 
-def part2():
+def part2(directions):
     ship_position = 0 + 0j
     waypoint = 10 + 1j
     for line in directions:
@@ -46,7 +46,7 @@ def part2():
     return (ship_position.real, ship_position.imag)
 
 
-a = part1()
-b = part2()
+a = part1(INPUT)
+b = part2(INPUT)
 print(a, (abs(a[0]) + abs(a[1])))
 print(b, (abs(b[0]) + abs(b[1])))
