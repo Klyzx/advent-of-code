@@ -56,7 +56,7 @@ def part2():
             candidates[j].discard(names[f])
 
     departures = 1
-    for i, n in enumerate(my_ticket):
+    for i, n in enumerate(ticket):
         if names[i].startswith("departure"):
             departures *= n
     return departures
