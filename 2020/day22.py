@@ -28,14 +28,14 @@ with open("inputs/22.in") as file:
     player1_deck = list(map(int, player1_deck.splitlines()[1:]))
     player2_deck = list(map(int, player2_deck.splitlines()[1:]))
 
-_, p1, p2 = play_game(player1_deck, player2_deck)
-windeck = p1 + p2
+_, d1, d2 = play_game(player1_deck, player2_deck)
+windeck = d1 + d2
 score1 = 0
 for index, card in enumerate(windeck[::-1]):
     score1 += (index + 1) * card
 
-_, p1, p2 = play_game(player1_deck, player2_deck, recursive=True)
-windeck = p1 + p2
+_, d1, d2 = play_game(player1_deck, player2_deck, recursive=True)
+windeck = d1 + d2
 score2 = 0
 for index, card in enumerate(windeck[::-1]):
     score2 += (index + 1) * card
